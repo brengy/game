@@ -10,7 +10,7 @@ body {
 
 canvas {
     width: 100vw; /* Full viewport width */
-    height: auto;  /* Maintain aspect ratio */
+    height: 100vh;  /* Maintain aspect ratio */
     border: 30px solid #fff;
 }
 
