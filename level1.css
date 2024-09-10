@@ -1,0 +1,22 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #222;
+    margin: 0;
+    overflow: hidden; /* Prevent scrolling */
+}
+
+canvas {
+    width: 100vw; /* Full viewport width */
+    height: auto;  /* Maintain aspect ratio */
+    border: 30px solid #fff;
+}
+
+@media (orientation: landscape) {
+    canvas {
+        width: 100vw; /* Full screen width in landscape mode */
+        height: 100vh; /* Full screen height in landscape mode */
+    }
+}
