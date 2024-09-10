@@ -39,9 +39,9 @@ const camera = {
 
 const player = {
   x: 50,
-  y: 0, // ”Ì „  ⁄ÌÌ‰ Â–Â «·ﬁÌ„… ·«Õﬁ« · ﬂÊ‰ ›Êﬁ «··ÊÕ «·√Ê·
-  width: 130,
-  height: 160,
+  y: 0, // √ì√≠√ä√£ √ä√ö√≠√≠√§ √•√ê√• √á√°√û√≠√£√â √°√á√ç√û√∞√á √°√ä√ü√¶√§ √ù√¶√û √á√°√°√¶√ç √á√°√É√¶√°
+  width: 100,
+  height: 100,
   velocityX: 0,
   velocityY: 0,
   isJumping: false,
@@ -351,7 +351,7 @@ function getRandomColor() {
   return color;
 }
 
-// ≈⁄œ«œ «· Õﬂ„ »«··„” ··„Ê»«Ì·
+// √Ö√ö√è√á√è √á√°√ä√ç√ü√£ √à√á√°√°√£√ì √°√°√£√¶√à√á√≠√°
 let isTouching = false;
 let touchStartX = 0;
 let touchStartY = 0;
