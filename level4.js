@@ -439,7 +439,7 @@ function getRandomColor() {
   return color;
 }
 
-// ÅÚÏÇÏ ÇáÊÍßã ÈÇááãÓ ááãæÈÇíá
+// Ã…ÃšÃÃ‡Ã Ã‡Ã¡ÃŠÃÃŸÃ£ ÃˆÃ‡Ã¡Ã¡Ã£Ã“ Ã¡Ã¡Ã£Ã¦ÃˆÃ‡Ã­Ã¡
 let isTouching = false;
 let touchStartX = 0;
 let touchStartY = 0;
@@ -459,7 +459,7 @@ canvas.addEventListener('touchstart', (event) => {
 canvas.addEventListener('touchmove', (event) => {
     if (isTouching) {
         touchCurrentX = event.touches[0].clientX;
-        touchCurrentY = event.touches[
+        touchCurrentY = event.touches[0].clientY;
        if (touchDeltaX < -30) { 
             keys['ArrowLeft'] = true;
             keys['ArrowRight'] = false;
