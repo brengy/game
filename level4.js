@@ -503,7 +503,7 @@ function startGame() {
 }
 
 loadAssets(() => {
-  startGame();
+backgroundMusic.play();
   generatePlatforms();
   update();
 });
