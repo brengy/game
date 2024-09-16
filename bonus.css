@@ -1,0 +1,37 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #222;
+    margin: 0;
+    overflow: hidden; /* Prevent scrolling */
+}
+
+#controls {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+}
+
+#controls button {
+  width: 60px;
+  height: 60px;
+  font-size: 18px;
+}
+
+canvas {
+    width: 100vw; /* Full viewport width */
+    height: auto;  /* Maintain aspect ratio */
+    border: 30px solid #fff;
+}
+
+@media (orientation: landscape) {
+    canvas {
+        width: 100vw; /* Full screen width in landscape mode */
+        height: 100vh; /* Full screen height in landscape mode */
+    }
+}
