@@ -445,7 +445,7 @@ function getRandomColor() {
   return color;
 }
 
-// ÅÚÏÇÏ ÇáÊÍßã ÈÇááãÓ ááãæÈÇíá
+// Touch controls for mobile
 let isTouching = false;
 let touchStartX = 0;
 let touchStartY = 0;
@@ -458,7 +458,6 @@ canvas.addEventListener('touchstart', (event) => {
     touchStartY = event.touches[0].clientY;
     touchCurrentX = touchStartX;
     touchCurrentY = touchStartY;
-
     event.preventDefault();
 });
 
@@ -466,7 +465,10 @@ canvas.addEventListener('touchmove', (event) => {
     if (isTouching) {
         touchCurrentX = event.touches[0].clientX;
         touchCurrentY = event.touches[0].clientY;
-       if (touchDeltaX < -30) { 
+        const touchDeltaX = touchCurrentX - touchStartX;
+        const touchDeltaY = touchCurrentY - touchStartY;
+
+        if (touchDeltaX < -30) { 
             keys['ArrowLeft'] = true;
             keys['ArrowRight'] = false;
         } else if (touchDeltaX > 30) { 
