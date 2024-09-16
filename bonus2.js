@@ -3,30 +3,13 @@ const ctx = canvas.getContext("2d");
 
 // Load images
 const bgImage = new Image();
-bgImage.src = 'bbbb.jpg';  // Background image
+bgImage.src = 'bbbb2.jpg';  // Background image
 
 const characterImage = new Image();
 characterImage.src = 'https://raw.githubusercontent.com/brengy/omar/main/imgonline-com-ua-twotoone-UOsKbvTFIowFMn-removebg-preview.png';  // Character image
 
 const coinImage = new Image();
 coinImage.src = 'golden_coin.png';  // Coin image path
-
-let keySequence = [];
-let touchStartX, touchStartY;
-
-// Key event handling
-window.addEventListener('keydown', (event) => {
-    keys[event.code] = true;
-
-    // Key sequence logic
-    keySequence.push(event.key);
-    if (keySequence.length > 3) {
-        keySequence.shift();
-    }
-    if (keySequence.join('') === 'sss') {
-        window.location.href = 'level3.html';
-    }
-});
 
 let character = {
     x: 50,
@@ -54,58 +37,27 @@ for (let i = 0; i < coinCount; i++) {
     });
 }
 
-let keys = {};
+// Listen for device orientation events
+window.addEventListener('deviceorientation', handleOrientation);
 
-// Key event listeners for character movement
-window.addEventListener("keydown", (e) => {
-    keys[e.key] = true;
-});
+// Handle orientation changes
+function handleOrientation(event) {
+    const tiltX = event.beta;  // Front-to-back tilt in degrees (range: -180 to 180)
+    const tiltY = event.gamma; // Left-to-right tilt in degrees (range: -90 to 90)
 
-window.addEventListener("keyup", (e) => {
-    keys[e.key] = false;
-});
-
-// Device orientation handling (Mobile control)
-window.addEventListener('deviceorientation', (event) => {
-    const tiltX = event.beta;  // Tilt front-back, ranges from -180 to 180
-    const tiltY = event.gamma; // Tilt left-right, ranges from -90 to 90
-
-    const threshold = 10;  // Adjust this value to control sensitivity
-
-    // Move character based on tilt angle
-    if (tiltY > threshold) {
-        character.x += character.speed;  // Move right
-    } else if (tiltY < -threshold) {
-        character.x -= character.speed;  // Move left
+    // Map tilt values to character movement
+    if (tiltX > 10) {
+        character.y += character.speed;  // Tilt forward (move down)
+    } else if (tiltX < -10) {
+        character.y -= character.speed;  // Tilt backward (move up)
     }
-    
-    if (tiltX > threshold) {
-        character.y += character.speed;  // Move down
-    } else if (tiltX < -threshold) {
-        character.y -= character.speed;  // Move up
+
+    if (tiltY > 10) {
+        character.x += character.speed;  // Tilt right (move right)
+    } else if (tiltY < -10) {
+        character.x -= character.speed;  // Tilt left (move left)
     }
-});
-
-// Button controls for moving left, right, up, down
-const directions = ["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown"];
-
-directions.forEach(direction => {
-    const button = document.getElementById(`move${direction.replace('Arrow', '')}`);
-    button.addEventListener("mousedown", () => {
-        keys[direction] = true;
-    });
-    button.addEventListener("mouseup", () => {
-        keys[direction] = false;
-    });
-    button.addEventListener("touchstart", (e) => {
-        e.preventDefault();
-        keys[direction] = true;
-    });
-    button.addEventListener("touchend", (e) => {
-        e.preventDefault();
-        keys[direction] = false;
-    });
-});
+}
 
 function update() {
     let elapsedTime = (Date.now() - startTime) / 1000;
@@ -114,20 +66,6 @@ function update() {
         character.x += character.speed;
         cameraX += character.speed;
     } else if (elapsedTime >= 47 && elapsedTime < 53) {
-        character.x += character.speed;
-    }
-
-    // Character movement based on key input
-    if (keys["ArrowUp"] && character.y > 0) {
-        character.y -= character.speed;
-    }
-    if (keys["ArrowDown"] && character.y < canvas.height - character.height) {
-        character.y += character.speed;
-    }
-    if (keys["ArrowLeft"] && character.x > cameraX) {
-        character.x -= character.speed;
-    }
-    if (keys["ArrowRight"]) {
         character.x += character.speed;
     }
 
