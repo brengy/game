@@ -1,6 +1,7 @@
 const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
 
+// Load images
 const bgImage = new Image();
 bgImage.src = 'bbbb2.jpg';  // Background image
 
@@ -8,21 +9,20 @@ const characterImage = new Image();
 characterImage.src = 'https://raw.githubusercontent.com/brengy/omar/main/imgonline-com-ua-twotoone-UOsKbvTFIowFMn-removebg-preview.png';  // Character image
 
 const coinImage = new Image();
-coinImage.src = 'golden_coin.png';  // Replace with your coin image path
+coinImage.src = 'golden_coin.png';  // Coin image path
 
 let keySequence = [];
 let touchStartX, touchStartY;
 
+// Key event handling
 window.addEventListener('keydown', (event) => {
     keys[event.code] = true;
 
-    // Add the current key to the sequence
+    // Key sequence logic
     keySequence.push(event.key);
-
     if (keySequence.length > 3) {
         keySequence.shift();
     }
-
     if (keySequence.join('') === 'sss') {
         window.location.href = 'level3.html';
     }
@@ -40,16 +40,14 @@ let score = 0;
 const targetScore = 1000;
 let coins = [];
 const coinCount = 20;  // Number of coins to generate
-
-let cameraX = 0;  // Camera starting position
-
+let cameraX = 0;
 let startTime = Date.now();
 let cameraStoppedTime = 0;
 
-// Generate initial coins
+// Initialize coins
 for (let i = 0; i < coinCount; i++) {
     coins.push({
-        x: Math.random() * canvas.width + canvas.width,  // Random position ahead of the screen
+        x: Math.random() * canvas.width + canvas.width,
         y: Math.random() * (canvas.height - 30),
         width: 30,
         height: 30
@@ -58,7 +56,7 @@ for (let i = 0; i < coinCount; i++) {
 
 let keys = {};
 
-// Event listeners for key presses
+// Key event listeners for character movement
 window.addEventListener("keydown", (e) => {
     keys[e.key] = true;
 });
@@ -67,46 +65,65 @@ window.addEventListener("keyup", (e) => {
     keys[e.key] = false;
 });
 
-// Event listeners for touch controls
+// Touch controls for touch screens
 canvas.addEventListener("touchstart", (e) => {
-    e.preventDefault();  // Prevent default touch actions
+    e.preventDefault();
     const touch = e.touches[0];
     touchStartX = touch.clientX;
     touchStartY = touch.clientY;
 });
 
 canvas.addEventListener("touchmove", (e) => {
-    e.preventDefault();  // Prevent default touch actions
+    e.preventDefault();
     const touch = e.touches[0];
     const touchEndX = touch.clientX;
     const touchEndY = touch.clientY;
     const dx = touchEndX - touchStartX;
     const dy = touchEndY - touchStartY;
 
-    // Move character based on touch movement
+    // Move character based on touch direction
     if (Math.abs(dx) > Math.abs(dy)) {
-        character.x += dx / 10;  // Adjust sensitivity as needed
+        character.x += dx / 10;  
     } else {
-        character.y -= dy / 10;  // Adjust sensitivity as needed
+        character.y -= dy / 10;  
     }
 
     touchStartX = touchEndX;
     touchStartY = touchEndY;
 });
 
+// Button controls for moving left, right, up, down
+const directions = ["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown"];
+
+directions.forEach(direction => {
+    const button = document.getElementById(`move${direction.replace('Arrow', '')}`);
+    button.addEventListener("mousedown", () => {
+        keys[direction] = true;
+    });
+    button.addEventListener("mouseup", () => {
+        keys[direction] = false;
+    });
+    button.addEventListener("touchstart", (e) => {
+        e.preventDefault();
+        keys[direction] = true;
+    });
+    button.addEventListener("touchend", (e) => {
+        e.preventDefault();
+        keys[direction] = false;
+    });
+});
+
 function update() {
-    let elapsedTime = (Date.now() - startTime) / 1000; // Elapsed time in seconds
+    let elapsedTime = (Date.now() - startTime) / 1000;
 
     if (elapsedTime < 47) {
-        // Move character and camera if less than 55 seconds have passed
         character.x += character.speed;
         cameraX += character.speed;
     } else if (elapsedTime >= 47 && elapsedTime < 53) {
-        // Stop camera movement and move character right automatically between 55 and 60 seconds
         character.x += character.speed;
     }
 
-    // Character movement with arrow keys
+    // Character movement based on key input
     if (keys["ArrowUp"] && character.y > 0) {
         character.y -= character.speed;
     }
@@ -120,31 +137,31 @@ function update() {
         character.x += character.speed;
     }
 
-    // Check for coin collisions
+    // Check for coin collisions and update score
     coins = coins.filter(coin => {
         if (character.x < coin.x + coin.width &&
             character.x + character.width > coin.x &&
             character.y < coin.y + coin.height &&
             character.y + character.height > coin.y) {
             score++;
-            return false;  // Remove coin
+            return false;
         }
         return true;
     });
 
-    // Add new coins randomly to the screen to keep it filled
+    // Add new coins as needed
     while (coins.length < coinCount) {
         coins.push({
-            x: Math.random() * canvas.width + cameraX + canvas.width,  // Add to the right of the camera view
+            x: Math.random() * canvas.width + cameraX + canvas.width,
             y: Math.random() * (canvas.height - 30),
             width: 30,
             height: 30
         });
     }
 
-    // Check if target score is reached or 50 seconds have passed
+    // Move to next level when score or time conditions are met
     if (score >= targetScore || elapsedTime >= 51) {
-        window.location.href = 'level3.html';  // Move to the next level
+        window.location.href = 'level3.html';
     }
 }
 
@@ -176,6 +193,7 @@ function gameLoop() {
     requestAnimationFrame(gameLoop);
 }
 
+// Start game loop when background is loaded
 bgImage.onload = () => {
-    gameLoop();  // Start the game loop when background is loaded
+    gameLoop();  
 };
