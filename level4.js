@@ -7,8 +7,8 @@ function resizeCanvas() {
     canvas.height = window.innerHeight;
 }
 
-window.addEventListener('resize', resizeCanvas);
-resizeCanvas(); // Initial resize
+//window.addEventListener('resize', resizeCanvas);
+//resizeCanvas(); // Initial resize
 
 let gameOver = false;
 let highScore = 0;
@@ -496,11 +496,6 @@ canvas.addEventListener('touchend', (event) => {
 
 let backgroundMusic = new Audio('l4.mp3');
 backgroundMusic.loop = true;
-
-function startGame() {
-  backgroundMusic.play();
-  update();
-}
 
 loadAssets(() => {
 backgroundMusic.play();
