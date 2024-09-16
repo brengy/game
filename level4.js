@@ -220,9 +220,7 @@ function handlePlayerMovement() {
     player.x += player.speed;
   } else {
     if (keys['ArrowLeft'] || keys['KeyA']) player.x -= player.speed;
-    if (keys['ArrowRight'] || keys['KeyD']) player.x += 
-
-player.speed;
+    if (keys['ArrowRight'] || keys['KeyD']) player.x += player.speed;
   }
   player.velocityX = isMobile ? player.speed : (keys['ArrowLeft'] 
 
