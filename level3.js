@@ -7,8 +7,8 @@ function resizeCanvas() {
     canvas.height = window.innerHeight;
 }
 
-window.addEventListener('resize', resizeCanvas);
-resizeCanvas(); // Initial resize
+//window.addEventListener('resize', resizeCanvas);
+//resizeCanvas(); // Initial resize
 
 let gameOver = false;
 let highScore = 0;
