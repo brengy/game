@@ -216,9 +216,17 @@ function generateEnemies() {
 }
 
 function handlePlayerMovement() {
-  if (keys['ArrowLeft'] || keys['KeyA']) player.x -= player.speed;
-  if (keys['ArrowRight'] || keys['KeyD']) player.x += player.speed;
-  player.velocityX = keys['ArrowLeft'] ? -player.speed : keys['ArrowRight'] ? player.speed : 0;
+  if (isMobile) {
+    player.x += player.speed;
+  } else {
+    if (keys['ArrowLeft'] || keys['KeyA']) player.x -= player.speed;
+    if (keys['ArrowRight'] || keys['KeyD']) player.x += 
+
+player.speed;
+  }
+  player.velocityX = isMobile ? player.speed : (keys['ArrowLeft'] 
+
+? -player.speed : keys['ArrowRight'] ? player.speed : 0);
   if (player.x < 0) player.x = 0;
 }
 
