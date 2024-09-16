@@ -3,7 +3,7 @@ const ctx = canvas.getContext("2d");
 
 // Load images
 const bgImage = new Image();
-bgImage.src = 'bbbb2.jpg';  // Background image
+bgImage.src = 'bbbb.jpg';  // Background image
 
 const characterImage = new Image();
 characterImage.src = 'https://raw.githubusercontent.com/brengy/omar/main/imgonline-com-ua-twotoone-UOsKbvTFIowFMn-removebg-preview.png';  // Character image
@@ -65,31 +65,25 @@ window.addEventListener("keyup", (e) => {
     keys[e.key] = false;
 });
 
-// Touch controls for touch screens
-canvas.addEventListener("touchstart", (e) => {
-    e.preventDefault();
-    const touch = e.touches[0];
-    touchStartX = touch.clientX;
-    touchStartY = touch.clientY;
-});
+// Device orientation handling (Mobile control)
+window.addEventListener('deviceorientation', (event) => {
+    const tiltX = event.beta;  // Tilt front-back, ranges from -180 to 180
+    const tiltY = event.gamma; // Tilt left-right, ranges from -90 to 90
 
-canvas.addEventListener("touchmove", (e) => {
-    e.preventDefault();
-    const touch = e.touches[0];
-    const touchEndX = touch.clientX;
-    const touchEndY = touch.clientY;
-    const dx = touchEndX - touchStartX;
-    const dy = touchEndY - touchStartY;
+    const threshold = 10;  // Adjust this value to control sensitivity
 
-    // Move character based on touch direction
-    if (Math.abs(dx) > Math.abs(dy)) {
-        character.x += dx / 10;  
-    } else {
-        character.y -= dy / 10;  
+    // Move character based on tilt angle
+    if (tiltY > threshold) {
+        character.x += character.speed;  // Move right
+    } else if (tiltY < -threshold) {
+        character.x -= character.speed;  // Move left
     }
-
-    touchStartX = touchEndX;
-    touchStartY = touchEndY;
+    
+    if (tiltX > threshold) {
+        character.y += character.speed;  // Move down
+    } else if (tiltX < -threshold) {
+        character.y -= character.speed;  // Move up
+    }
 });
 
 // Button controls for moving left, right, up, down
