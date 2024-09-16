@@ -499,9 +499,14 @@ canvas.addEventListener('touchend', (event) => {
 let backgroundMusic = new Audio('l3.mp3');
 backgroundMusic.loop = true;
 
+function startGame() {
+  backgroundMusic.play();
+  update();
+}
 
 loadAssets(() => {
-  backgroundMusic.play();
+startGame();
   generatePlatforms();
   update();
 });
+
