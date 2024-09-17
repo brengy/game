@@ -18,6 +18,7 @@ function loadAssets(callback) {
   explosionImage.src = 'https://i.imgur.com/VSSau8k.png';
   bulletImage.src = 'shoes.png';
   enemyImage.src = 'https://i.imgur.com/FkQZluV.png';
+  canvas.focus();
   callback();
 }
 
@@ -46,7 +47,7 @@ const player = {
   explosionCounter: 0,
   bullets: [],
   shoot() {
-    // ≈÷«›… „ﬁ–Ê› ÃœÌœ ⁄‰œ ≈ÿ·«ﬁ «·‰«—
+    // √Ö√ñ√á√ù√â √£√û√ê√¶√ù √å√è√≠√è √ö√§√è √Ö√ò√°√á√û √á√°√§√á√ë
     this.bullets.push({
       x: this.x + this.width,
       y: this.y + this.height / 2 - 5,
@@ -57,21 +58,21 @@ const player = {
   }
 };
 
-// «· Õﬁﬁ ≈–« ﬂ«‰ «·ÃÂ«“ „Õ„Ê·«
+// √á√°√ä√ç√û√û √Ö√ê√á √ü√á√§ √á√°√å√•√á√í √£√ç√£√¶√°√∞√á
 const isMobile = /Mobi|Android/i.test(navigator.userAgent);
 
-//  ⁄œÌ· ”—⁄… «·Õ—ﬂ… «· ·ﬁ«∆Ì… ··‘Œ’Ì… »‰«¡ ⁄·Ï ‰Ê⁄ «·ÃÂ«“
+// √ä√ö√è√≠√° √ì√ë√ö√â √á√°√ç√ë√ü√â √á√°√ä√°√û√á√Ü√≠√â √°√°√î√é√ï√≠√â √à√§√á√Å√∞ √ö√°√¨ √§√¶√ö √á√°√å√•√á√í
 if (isMobile) {
-  player.speed = 4; // Ì„ﬂ‰ﬂ ÷»ÿ «·”—⁄… Õ”» «·Õ«Ã…
+  player.speed = 4; // √≠√£√ü√§√ü √ñ√à√ò √á√°√ì√ë√ö√â √ç√ì√à √á√°√ç√á√å√â
 }
 
 
-// ≈÷«›… ÕœÀ ≈ÿ·«ﬁ «·‰«— ⁄‰œ «·‰ﬁ— ⁄·Ï «·“— ›Ì «·√ÃÂ“… «·„Õ„Ê·…
+// √Ö√ñ√á√ù√â √ç√è√ã √Ö√ò√°√á√û √á√°√§√á√ë √ö√§√è √á√°√§√û√ë √ö√°√¨ √á√°√í√ë √ù√≠ √á√°√É√å√•√í√â √á√°√£√ç√£√¶√°√â
 if (isMobile) {
   const shootButton = document.getElementById('shootButton');
   shootButton.addEventListener('click', () => {
     player.shoot(); canvas.focus();
- // «” œ⁄«¡ œ«·… ≈ÿ·«ﬁ «·‰«— ⁄‰œ «·‰ﬁ—
+ // √á√ì√ä√è√ö√á√Å √è√á√°√â √Ö√ò√°√á√û √á√°√§√á√ë √ö√§√è √á√°√§√û√ë
   });
 }
 
@@ -189,7 +190,7 @@ function generateCoins() {
 }
 
 function generateEnemies() {
-  if (Math.random() < 0.01) { // «Õ „«· ŸÂÊ— «·√⁄œ«¡
+  if (Math.random() < 0.01) { // √á√ç√ä√£√á√° √ô√•√¶√ë √á√°√É√ö√è√á√Å
     const enemy = new Enemy(canvas.width + camera.x, Math.random() * (canvas.height - 100), 50, 50, 3);
     enemies.push(enemy);
   }
@@ -223,10 +224,10 @@ window.addEventListener('keydown', (event) => {
 
 function handlePlayerMovement() {
   if (isMobile) {
-    // «·Õ—ﬂ… «· ·ﬁ«∆Ì… „‰ «·Ì”«— ≈·Ï «·Ì„Ì‰
+    // √á√°√ç√ë√ü√â √á√°√ä√°√û√á√Ü√≠√â √£√§ √á√°√≠√ì√á√ë √Ö√°√¨ √á√°√≠√£√≠√§
     player.x += player.speed;
   } else {
-    // «·Õ—ﬂ… »«” Œœ«„ «·√“—«— ⁄·Ï «·√ÃÂ“… €Ì— «·„Õ„Ê·…
+    // √á√°√ç√ë√ü√â √à√á√ì√ä√é√è√á√£ √á√°√É√í√ë√á√ë √ö√°√¨ √á√°√É√å√•√í√â √õ√≠√ë √á√°√£√ç√£√¶√°√â
     if (keys['ArrowLeft'] || keys['KeyA']) player.x -= player.speed;
     if (keys['ArrowRight'] || keys['KeyD']) player.x += player.speed;
   }
@@ -251,7 +252,7 @@ function handlePlayerVerticalMovement() {
     }
   });
 
-  // «·”„«Õ »«·ﬁ›“ ›ﬁÿ ≈–« ·„ Ìﬂ‰ «··«⁄» Ìÿ·ﬁ «·‰«—
+  // √á√°√ì√£√á√ç √à√á√°√û√ù√í √ù√û√ò √Ö√ê√á √°√£ √≠√ü√§ √á√°√°√á√ö√à √≠√ò√°√û √á√°√§√á√ë
   if ((keys['ArrowUp'] || keys['KeyW']) && !player.isJumping && !keys['Space']) {
     player.velocityY = -player.jumpHeight;
     player.isJumping = true;
@@ -287,7 +288,7 @@ function detectCollisions() {
     }
   });
 
-  // «· Õﬁﬁ „‰ «·«’ÿœ«„ »Ì‰ «·„ﬁ–Ê›«  Ê«·√⁄œ«¡
+  // √á√°√ä√ç√û√û √£√§ √á√°√á√ï√ò√è√á√£ √à√≠√§ √á√°√£√û√ê√¶√ù√á√ä √¶√á√°√É√ö√è√á√Å
   player.bullets.forEach((bullet, bulletIndex) => {
     enemies.forEach((enemy, enemyIndex) => {
       if (bullet.x < enemy.x + enemy.width &&
@@ -301,13 +302,13 @@ function detectCollisions() {
     });
   });
 
-  // «· Õﬁﬁ „‰ «·«’ÿœ«„ »Ì‰ «·‘Œ’Ì… Ê«·√⁄œ«¡ ·≈‰Â«¡ «··⁄»…
+  // √á√°√ä√ç√û√û √£√§ √á√°√á√ï√ò√è√á√£ √à√≠√§ √á√°√î√é√ï√≠√â √¶√á√°√É√ö√è√á√Å √°√Ö√§√•√á√Å √á√°√°√ö√à√â
   enemies.forEach((enemy, index) => {
     if (player.x < enemy.x + enemy.width &&
         player.x + player.width > enemy.x &&
         player.y < enemy.y + enemy.height &&
         player.y + player.height > enemy.y) {
-      gameOver = true; // ≈‰Â«¡ «··⁄»… ⁄‰œ «·«’ÿœ«„
+      gameOver = true; // √Ö√§√•√á√Å √á√°√°√ö√à√â √ö√§√è √á√°√á√ï√ò√è√á√£
     }
 
     if (enemy.x + enemy.width < camera.x) {
@@ -315,7 +316,7 @@ function detectCollisions() {
     }
   });
 
-  // ≈“«·… «·„ﬁ–Ê›«  «· Ì  Œ—Ã „‰ «·‘«‘…
+  // √Ö√í√á√°√â √á√°√£√û√ê√¶√ù√á√ä √á√°√ä√≠ √ä√é√ë√å √£√§ √á√°√î√á√î√â
   player.bullets.forEach((bullet, index) => {
     bullet.x += bullet.speed;
     if (bullet.x > camera.x + canvas.width) {
@@ -442,7 +443,7 @@ function restartGame() {
 
 window.addEventListener('keydown', (event) => {
   keys[event.code] = true;
-  // ≈ÿ·«ﬁ «·‰«— ⁄‰œ «·÷€ÿ ⁄·Ï „› «Õ «·„”«›…
+  // √Ö√ò√°√á√û √á√°√§√á√ë √ö√§√è √á√°√ñ√õ√ò √ö√°√¨ √£√ù√ä√á√ç √á√°√£√ì√á√ù√â
   if (event.code === 'Space' && !gameOver) {
     player.shoot();
   }
@@ -459,7 +460,7 @@ function getRandomColor() {
   return color;
 }
 
-// ≈⁄œ«œ «· Õﬂ„ »«··„” ··„Ê»«Ì·
+// √Ö√ö√è√á√è √á√°√ä√ç√ü√£ √à√á√°√°√£√ì √°√°√£√¶√à√á√≠√°
 let isTouching = false;
 let touchStartX = 0;
 let touchStartY = 0;
@@ -473,7 +474,7 @@ canvas.addEventListener('touchstart', (event) => {
     touchCurrentX = touchStartX;
     touchCurrentY = touchStartY;
 
-    // „‰⁄ «· „—Ì— «·«› —«÷Ì
+    // √£√§√ö √á√°√ä√£√ë√≠√ë √á√°√á√ù√ä√ë√á√ñ√≠
     event.preventDefault();
 });
 
@@ -500,7 +501,7 @@ canvas.addEventListener('touchmove', (event) => {
             player.isJumping = true;
         }
 
-        // „‰⁄ «· „—Ì— «·«› —«÷Ì
+        // √£√§√ö √á√°√ä√£√ë√≠√ë √á√°√á√ù√ä√ë√á√ñ√≠
         event.preventDefault();
     }
 });
@@ -516,7 +517,7 @@ canvas.addEventListener('touchend', (event) => {
         }
     }, 50);
 
-    // „‰⁄ «· „—Ì— «·«› —«÷Ì
+    // √£√§√ö √á√°√ä√£√ë√≠√ë √á√°√á√ù√ä√ë√á√ñ√≠
     event.preventDefault();
 });
 
