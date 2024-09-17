@@ -28,7 +28,8 @@ function loadAssets(callback) {
   explosionImage.src = 'https://i.imgur.com/VSSau8k.png';
   bulletImage.src = 'shoes.png';
   enemyImage.src = 'https://raw.githubusercontent.com/brengy/car/main/WhatsApp_Image_2024-02-29_at_10.14.55_PM-removebg-preview.png';
-  callback();
+   canvas.focus();
+    callback();
 }
 
 // Key sequence to navigate to next level
