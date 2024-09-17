@@ -256,7 +256,8 @@ function update() {
     enemies.forEach(enemy => enemy.update());
     render();
   if (player.score >= 70) {
-      window.location.href = 'level4.html'; 
+      window.location.href = 'level4.html'; canvas.focus();
+      
       return; 
     }
 
