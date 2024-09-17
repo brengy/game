@@ -12,6 +12,7 @@ canvas {
     width: 100vw; /* Full viewport width */
     height: auto;  /* Maintain aspect ratio */
     border: 30px solid #fff;
+   overflow: hidden; 
 }
 
 @media (orientation: landscape) {
