@@ -252,6 +252,7 @@ function handlePlayerVerticalMovement() {
 
 function update() {
   if (!gameOver) {
+      canvas.focus();
     handlePlayerVerticalMovement();
     handlePlayerMovement();
     camera.update();
@@ -261,7 +262,8 @@ function update() {
     enemies.forEach(enemy => enemy.update());
     render();
   if (player.score >= 70) {
-      window.location.href = 'level5.html'; 
+      window.location.href = 'level5.html';
+      canvas.focus();
       return; 
     }
 
