@@ -246,6 +246,7 @@ function handlePlayerVerticalMovement() {
 
 function update() {
   if (!gameOver) {
+      canvas.focus();
     handlePlayerVerticalMovement();
     handlePlayerMovement();
     camera.update();
