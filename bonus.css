@@ -18,7 +18,7 @@ body {
 }
 #controls2 {
   position: absolute;
-  bottom: 80px;
+  bottom: 100px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
@@ -38,7 +38,9 @@ body {
 canvas {
     width: 100vw; /* Full viewport width */
     height: auto;  /* Maintain aspect ratio */
-    border: 30px solid #fff;
+    border: 0px solid #fff; 
+    overflow: hidden;
+    
 }
 
 @media (orientation: landscape) {
