@@ -21,7 +21,7 @@ let bulletImage = new Image();
 let enemyImage = new Image();
 
 function loadAssets(callback) {
-  backgroundImage.src = 'bbbh4.jpg';
+  backgroundImage.src = 'bbbh5.jpg';
   characterImage1.src = 'https://raw.githubusercontent.com/brengy/car/main/WhatsApp_Image_2024-02-29_at_10.14.55_PM-removebg-preview.png';
   characterImage2.src = characterImage1.src;
   floorImage.src = 'https://i.imgur.com/7ER7jta.png';
