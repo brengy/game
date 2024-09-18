@@ -499,7 +499,7 @@ canvas.addEventListener('touchend', (event) => {
     event.preventDefault();
 });
 
-let backgroundMusic = new Audio('l3.mp3');
+let backgroundMusic = new Audio('Ways of the Wizard.mp3');
 backgroundMusic.loop = true;
 
 function startGame() {
