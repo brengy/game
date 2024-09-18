@@ -167,7 +167,7 @@ function render() {
   enemy.bullets.forEach(bullet => ctx.drawImage(enemyBulletImage, bullet.x, bullet.y, bullet.width, bullet.height));
 }
 
-let backgroundMusic = new Audio('Ghosties and Ghoulies.mp3');
+let backgroundMusic = new Audio('Ways of the Wizard.mp3');
 backgroundMusic.loop = true;
 
 loadAssets(() => {
