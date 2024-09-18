@@ -201,7 +201,7 @@ function handlePlayerVerticalMovement() {
   if ((keys['Space'] || keys['ArrowUp'] || keys['KeyW']) && !player.isJumping) {
     player.velocityY = -player.jumpHeight;
     player.isJumping = true;
-    jumpSound.play().catch(error => console.log(error));
+  //  jumpSound.play().catch(error => console.log(error));
   }
 }
 
@@ -407,8 +407,12 @@ canvas.addEventListener('touchend', (event) => {
 
     event.preventDefault();
 });
+let backgroundMusic = new Audio('A Strange Land of Wonder.mp3');
+backgroundMusic.loop = true; // Loop the background music
 
-loadAssets(() => {
+
+loadAssets(() => { 
+    backgroundMusic.play(); 
   generatePlatforms();
   update();
 });
