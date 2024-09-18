@@ -186,8 +186,12 @@ function draw() {
     ctx.fillText(`Score: ${score}`, 10, 30);
 }
 
+let backgroundMusic = new Audio('Riding High.mp3');
+backgroundMusic.loop = true;
+
 // Main game loop
 function gameLoop() {
+    backgroundMusic.play();
     update();
     draw();
     requestAnimationFrame(gameLoop);
