@@ -509,7 +509,7 @@ let backgroundMusic = new Audio('Ghosties and Ghoulies.mp3');
 backgroundMusic.loop = true;
 
 loadAssets(() => {
-//backgroundMusic.play();
+backgroundMusic.play();
   generatePlatforms();
   update();
 });
