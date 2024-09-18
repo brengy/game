@@ -521,7 +521,7 @@ canvas.addEventListener('touchend', (event) => {
     event.preventDefault();
 });
 
-let backgroundMusic = new Audio('bg.mp3');
+let backgroundMusic = new Audio('The First Days of Spring.mp3');
 backgroundMusic.loop = true; // Loop the background music
 
 // Play background music when the game starts
