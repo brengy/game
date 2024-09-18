@@ -505,7 +505,7 @@ canvas.addEventListener('touchend', (event) => {
     event.preventDefault();
 });
 
-let backgroundMusic = new Audio('l4.mp3');
+let backgroundMusic = new Audio('Ghosties and Ghoulies.mp3');
 backgroundMusic.loop = true;
 
 loadAssets(() => {
