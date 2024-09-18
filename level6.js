@@ -167,5 +167,10 @@ function render() {
   enemy.bullets.forEach(bullet => ctx.drawImage(enemyBulletImage, bullet.x, bullet.y, bullet.width, bullet.height));
 }
 
-// Initialize the game
-update();
+let backgroundMusic = new Audio('Ghosties and Ghoulies.mp3');
+backgroundMusic.loop = true;
+
+loadAssets(() => {
+backgroundMusic.play();
+  update();
+});
