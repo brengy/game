@@ -31,8 +31,8 @@ window.addEventListener('keydown', (event) => {
 let character = {
     x: 50,
     y: canvas.height / 2 - 30,
-    width: 100,
-    height: 160,
+    width: 130,
+    height: 180,
     speed: 4
 };
 
