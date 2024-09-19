@@ -40,8 +40,8 @@ const camera = {
 const player = {
   x: 50,
   y: 0, // ÓíÊã ÊÚííä åÐå ÇáÞíãÉ áÇÍÞðÇ áÊßæä ÝæÞ ÇááæÍ ÇáÃæá
-  width: 100,
-  height: 100,
+  width: 160,
+  height: 200,
   velocityX: 0,
   velocityY: 0,
   isJumping: false,
